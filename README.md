@@ -17,3 +17,5 @@ Use `mvn package` to create a `*.war` file, that can be uploaded into Tomcat
 #### TODO
 
 Connect `mvn deploy` with Tomcat
+
+chrzasz forked
