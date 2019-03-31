@@ -11,7 +11,7 @@ public enum TweetService {
 
     private EntityManager em;
 
-    private TweetService(){
+    TweetService(){
         em = Persistence.createEntityManagerFactory("persistence")
                 .createEntityManager();
     }

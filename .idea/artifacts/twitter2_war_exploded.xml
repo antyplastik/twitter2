@@ -36,6 +36,8 @@
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:9.0.12" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-annotations-api:9.0.12" />
           <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.3.0" />
+          <element id="library" level="project" name="Maven: joda-time:joda-time-hibernate:1.4" />
+          <element id="library" level="project" name="Maven: joda-time:joda-time:2.10.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
