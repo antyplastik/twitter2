@@ -14,23 +14,41 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import javax.xml.bind.DatatypeConverter;
 
-@WebServlet(name="RegisterController",
+@WebServlet(name = "RegisterController",
         urlPatterns = "/register")
 public class RegisterController extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = new User();
-        user.setUsername(request.getParameter("username"));
-        try {
-            user.setPassword(DatatypeConverter.printHexBinary(
-                    MessageDigest.getInstance("MD5").digest(request.getParameter("password").getBytes("UTF-8"))));
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        if (userCheck(username) && passwordCheck(password)) {
+            user.setUsername(username);
+            try {
+                user.setPassword(DatatypeConverter.printHexBinary(
+                        MessageDigest.getInstance("MD5").digest(password.getBytes("UTF-8"))));
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+            UserService.INSTANCE.registerUser(user);
+            Cookie c = new Cookie("userId", "" + user.getId());
+            c.setMaxAge(60 * 60);
+            response.addCookie(c);
+            response.sendRedirect("/twitter2/");
+        } else {
+
         }
-        UserService.INSTANCE.registerUser(user);
-        Cookie c = new Cookie("userId", ""+user.getId());
-        c.setMaxAge(60*60);
-        response.addCookie(c);
-        response.sendRedirect("/twitter2/");
     }
+
+    private boolean passwordCheck(String password) {
+        return (password != null || !password.equals(""));
+    }
+
+    private boolean userCheck(String user) {
+        return (user != null || !user.equals(""));
+    }
+
+
 }

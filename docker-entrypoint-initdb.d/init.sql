@@ -45,5 +45,4 @@ CREATE TABLE IF NOT EXISTS response (
   PRIMARY KEY (id),
   FOREIGN KEY (tweetId) REFERENCES tweet(id),
   FOREIGN KEY (userId) REFERENCES user(id)
-)
-
+);

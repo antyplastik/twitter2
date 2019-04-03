@@ -1,7 +1,5 @@
 package sda.twitter2.models;
 
-
-import com.sun.istack.internal.NotNull;
 import lombok.*;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
@@ -21,7 +19,7 @@ public class Tweet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotNull
+    @NonNull
     private String message;
 
     @Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")

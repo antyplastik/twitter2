@@ -17,6 +17,8 @@ public class Like {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @ManyToOne
+    @JoinColumn(name = "userId")
     private User user;
 
     @Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
