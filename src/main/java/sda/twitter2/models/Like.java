@@ -1,6 +1,8 @@
 package sda.twitter2.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
@@ -9,6 +11,8 @@ import javax.persistence.*;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "likes")
 public class Like {
@@ -18,11 +22,15 @@ public class Like {
     private int id;
 
     @ManyToOne
+    @JoinColumn(name = "tweetId")
+    private Tweet tweetId;
+
+    @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
 
     @Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
     private DateTime date;
 
-
+    private boolean active;
 }

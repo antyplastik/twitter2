@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 
-public class DefaultUserService implements DBservice<User> {
+public class DefaultUserService implements DatabaseService<User> {
 
     private EntityManager em;
 
@@ -52,6 +52,14 @@ public class DefaultUserService implements DBservice<User> {
         em.getTransaction().commit();
 
         return found;
+    }
+
+    @Override
+    public User findById(Long id) {
+        em.getTransaction().begin();
+        User user = em.find(User.class, id);
+        em.getTransaction().commit();
+        return user;
     }
 
     @Override

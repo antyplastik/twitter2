@@ -3,13 +3,11 @@ package sda.twitter2.controllers;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import sda.twitter2.models.User;
-import sda.twitter2.services.DBservice;
+import sda.twitter2.services.DatabaseService;
 import sda.twitter2.services.DefaultUserService;
-import sda.twitter2.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +35,7 @@ public class RegisterControllerTest {
     @Test
     @Parameters(method = "testUsers")
     public void checkUser(String username, String password, boolean expected) throws IOException {
-        DBservice userService = new DefaultUserService();
+        DatabaseService userService = new DefaultUserService();
 
         User user = new User();
         user.setUsername(username);

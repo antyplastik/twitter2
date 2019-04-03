@@ -33,16 +33,23 @@ CREATE TABLE IF NOT EXISTS likes
 (
   id     int NOT NULL AUTO_INCREMENT,
   userId int,
+  tweetId int,
   date   DATETIME,
+  active bit,
   PRIMARY KEY (id),
-  FOREIGN KEY (userId) REFERENCES user (id)
+  FOREIGN KEY (userId) REFERENCES user (id),
+  FOREIGN KEY (tweetId) REFERENCES tweet (id)
 );
+
+select * from likes;
 
 CREATE TABLE IF NOT EXISTS response (
   id int NOT NULL AUTO_INCREMENT,
   tweetId int,
-  userId int,
+  respTweet int,
   PRIMARY KEY (id),
   FOREIGN KEY (tweetId) REFERENCES tweet(id),
-  FOREIGN KEY (userId) REFERENCES user(id)
+  FOREIGN KEY (respTweet) REFERENCES tweet(id)
 );
+drop table twitter2.response;
+select * from response;

@@ -5,6 +5,7 @@ import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Setter
@@ -28,5 +29,8 @@ public class Tweet {
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
+
+    @OneToMany
+    private List<Response> responses;
 
 }
