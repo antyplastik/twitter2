@@ -46,7 +46,6 @@ public class DefaultLikeService implements DatabaseService<Like> {
 
     @Override
     public boolean isExist(Like like) {
-        like = find(like);
         return find(like) != null;
     }
 
@@ -63,7 +62,6 @@ public class DefaultLikeService implements DatabaseService<Like> {
         } catch (NoResultException e) {
         }
         em.getTransaction().commit();
-
         return found;
     }
 

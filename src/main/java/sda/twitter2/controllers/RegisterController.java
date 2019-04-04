@@ -1,7 +1,7 @@
 package sda.twitter2.controllers;
 
 import sda.twitter2.models.User;
-import sda.twitter2.services.UserService;
+import sda.twitter2.services.oldSolution.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;

@@ -1,5 +1,6 @@
 package sda.twitter2.services;
 
+import sda.twitter2.models.Account;
 import sda.twitter2.models.User;
 
 import javax.persistence.EntityManager;
@@ -22,24 +23,29 @@ public class DefaultUserService implements DatabaseService<User> {
         return isExist(user);
     }
 
-    public boolean create(){
+    public boolean createAccount(User user, String accountName){
+        DatabaseService dsa = new DefaultAccountService();
+        dsa.create(new Account(0,accountName,user,null,null,null,true));
+        return dsa.isExist(dsa);
+    }
 
-        return false;
+    public boolean deleteAccount(Account account){
+        DatabaseService dsa = new DefaultAccountService();
+        return dsa.delete(account);
     }
 
     @Override
-    public boolean update(User... users){
-         User updated = find(users[0]);
-         updated.setUsername(users[1].getUsername());
-         updated.setPassword(users[1].getPassword());
+    public boolean update(User... users) {
+        User updated = find(users[0]);
+        updated.setUsername(users[1].getUsername());
+        updated.setPassword(users[1].getPassword());
 
         return isExist(users[1]);
     }
 
     @Override
     public boolean isExist(User user) {
-        user = find(user);
-        return user != null;
+        return find(user) != null;
     }
 
     @Override

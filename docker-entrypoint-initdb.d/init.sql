@@ -15,12 +15,16 @@ from user;
 CREATE TABLE IF NOT EXISTS account
 (
     id int NOT NULL AUTO_INCREMENT,
+    accountName varchar(255),
+    userId int,
+    description varchar(255),
     followersId int,
     followsId int,
     PRIMARY KEY (`id`),
     FOREIGN KEY (followersId) REFERENCES follower(id),
     FOREIGN KEY (followsId) REFERENCES follow(id)
 );
+drop table twitter2.account;
 select *
 from account;
 

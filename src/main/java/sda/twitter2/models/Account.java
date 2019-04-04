@@ -18,6 +18,14 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NonNull
+    @Column(length = 255)
+    private String accountName;
+
+    @ManyToOne
+    @JoinColumn(name = "usertId")
+    private User userId;
+
     @Column(length = 255)
     private String description;
 
@@ -26,5 +34,7 @@ public class Account {
 
     @OneToMany
     private List<Follow> follows;
+
+    private boolean active;
 
 }

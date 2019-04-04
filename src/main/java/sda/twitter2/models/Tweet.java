@@ -29,8 +29,11 @@ public class Tweet {
     private DateTime date;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
-    private User user;
+    @JoinColumn(name = "accountId")
+    private Account account;
+
+    @OneToMany
+    private List<Like> likes;
 
     @OneToMany
     private List<Response> responses;

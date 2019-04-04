@@ -1,4 +1,4 @@
-package sda.twitter2.services;
+package sda.twitter2.services.oldSolution;
 
 import sda.twitter2.models.Tweet;
 import sda.twitter2.models.User;

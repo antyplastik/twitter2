@@ -26,8 +26,8 @@ public class Like {
     private Tweet tweetId;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
-    private User user;
+    @JoinColumn(name = "accountId")
+    private Account account;
 
     @Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
     private DateTime date;
