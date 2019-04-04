@@ -1,6 +1,7 @@
 package sda.twitter2.models;
 
 import lombok.*;
+import org.hibernate.annotations.Columns;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
@@ -21,6 +22,7 @@ public class Tweet {
     private long id;
 
     @NonNull
+    @Column(length = 255)
     private String message;
 
     @Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")

@@ -22,6 +22,11 @@ public class DefaultUserService implements DatabaseService<User> {
         return isExist(user);
     }
 
+    public boolean create(){
+
+        return false;
+    }
+
     @Override
     public boolean update(User... users){
          User updated = find(users[0]);
